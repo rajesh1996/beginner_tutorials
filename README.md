@@ -5,7 +5,7 @@
 Rajeshwar N S
 
 ## Overview
-Create a ROS package with simple subscriber-listener nodes in C++
+Create a ROS package with simple subscriber-publisher nodes in C++
 
 ## Dependencies
 * Ubuntu-18.04
