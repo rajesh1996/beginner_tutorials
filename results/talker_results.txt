@@ -1,0 +1,9 @@
+rosrun beginner_tutorials talker
+[ INFO] [1603674637.203854458]: I love Robots 0
+[ INFO] [1603674637.304023179]: I love Robots 1
+[ INFO] [1603674637.403979783]: I love Robots 2
+[ INFO] [1603674637.504036060]: I love Robots 3
+[ INFO] [1603674637.604028333]: I love Robots 4
+[ INFO] [1603674637.704018486]: I love Robots 5
+[ INFO] [1603674637.804039151]: I love Robots 6
+[ INFO] [1603674637.904055699]: I love Robots 7
