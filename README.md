@@ -1,24 +1,24 @@
 ## ROS - Beginner Tutorials
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-##Author
+## Author
 Rajeshwar N S
 
-##Overview
+## Overview
 Create a ROS package with simple subscriber-listener nodes in C++
 
-##Dependencies
+## Dependencies
 * Ubuntu-18.04
 * ROS Melodic
 
-##Create catkin workspace
+## Create catkin workspace
 ```
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/
 $ catkin_make
 ```
 
-##Build Instructions
+## Build Instructions
 * Clone the below repoitory in catkin _ws
 ```
 $ cd ~/catkin_ws/src
@@ -31,7 +31,7 @@ $ source ~/catkin_ws/devel/setup.bash
 $ catkin_make
 ```
 
-##Run Instructions
+## Run Instructions
 * Start the ros master
 ```
 $ roscore
