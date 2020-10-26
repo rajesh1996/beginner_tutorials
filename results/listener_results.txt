@@ -1,0 +1,9 @@
+rosrun beginner_tutorials listener 
+[ INFO] [1603674760.067098811]: I heard: [I love Robots 390]
+[ INFO] [1603674760.166806449]: I heard: [I love Robots 391]
+[ INFO] [1603674760.266824146]: I heard: [I love Robots 392]
+[ INFO] [1603674760.366903697]: I heard: [I love Robots 393]
+[ INFO] [1603674760.466931051]: I heard: [I love Robots 394]
+[ INFO] [1603674760.566938836]: I heard: [I love Robots 395]
+[ INFO] [1603674760.666914220]: I heard: [I love Robots 396]
+[ INFO] [1603674760.766807007]: I heard: [I love Robots 397]
