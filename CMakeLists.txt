@@ -5,6 +5,9 @@ project(beginner_tutorials)
 ## Find catkin and any catkin packages
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg)
 
+## Generate added messages and services
+generate_messages(DEPENDENCIES std_msgs)
+
 ## Declare a catkin package
 catkin_package()
 
