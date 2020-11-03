@@ -1,15 +1,13 @@
 <launch>
     <arg name="freq_rate" default="8" doc="freq_rate"/>
-    <param name="freq_" type="int" value="$(arg freq_rate)" />
-    <node 
-    pkg="beginner_tutorials"
-    type="talker"
-    name="talker_publisher"
-    output="screen"/>
+    <param name="freq_rate" value="$(arg freq_rate)"/>
+    <node pkg="beginner_tutorials"
+          type="talker"
+          name="talker_publisher"
+          output="screen"/>
 
-    <node 
-    pkg="beginner_tutorials"
-    type="listener"
-    name="listener_subscriber"
-    output="screen"/>
+    <node pkg="beginner_tutorials"
+          type="listener"
+          name="listener_subscriber"
+          output="screen"/>
 </launch>
