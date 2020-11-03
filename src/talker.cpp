@@ -31,6 +31,18 @@
 // %Tag(MSG_HEADER)%
 #include "std_msgs/String.h"
 // %EndTag(MSG_HEADER)%
+#include "beginner_tutorials/changeString.h"
+#include <string>
+#include <iostream>
+#include <exception>
+
+bool newString(beginner_tutorials::changeString::Request &req,
+               beginner_tutorials::changeString::Response &res) {
+               ROS_INFO_STREAM("String in service:" << req.inputString);
+               ROS_WARN_STREAM("CHanging the string now!!");
+               res.OutputString = req.inputString
+               return true;
+}
 
 /**
  * @fn int main(int, char**)
@@ -64,6 +76,8 @@ int main(int argc, char **argv) {
   ros::NodeHandle n;
 // %EndTag(NODEHANDLE)%
 
+// Advertise the service
+  ros::ServiceServer service = n.advertiseService("Changing_String",newString);
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
