@@ -36,16 +36,23 @@ $ catkin_make
 ```
 $ roscore
 ```
-* In a new terminal source the dir again and run the talker node to publish the message
+* In a new terminal source the dir again and run the launch file to run the publisher and subscriber
 
 ```
 $ source ~/catkin_ws/devel/setup.bash
-$ rosrun beginner_tutorials talker
+$ roslaunch beginner_tutorials beg_nodes.launch freq_rate:=10
+
 ```
-* In another terminal source the dir again and run the listener node to subscribe to the message published
+* In another terminal source the dir again and run the service call to publish new message 
 ```
 $ source ~/catkin_ws/devel/setup.bash
-$ rosrun beginner_tutorials listener
+$ rosservice call /changeString "Hello"
+
+```
+* To see message logs, run the rqt console by typing in a new terminal
+```
+rqt_console
+
 ```
 * Ctrl + C in each window to terminate the program
 
