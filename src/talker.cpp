@@ -36,7 +36,7 @@
 #include <iostream>
 #include <exception>
 
-extern std::string custom_msg = "I love robots";
+std::string custom_msg = "I love robots";
 
 bool newString(beginner_tutorials::changeString::Request &req,
                beginner_tutorials::changeString::Response &res) {
@@ -104,18 +104,19 @@ int main(int argc, char **argv) {
   // Advertise the service
   ros::ServiceServer service = n.advertiseService("changeString",newString);
 // %EndTag(PUBLISHER)%
-  int frequency_rate = 0;
-  n.getParam("freq_",frequency_rate);
-  if(frequency_rate>0){
+  int frequency_rate=0;
+  n.getParam("/freq_rate",frequency_rate);
+  ROS_INFO_STREAM("Current frequency set: "<<frequency_rate);
+  if(frequency_rate > 0){
     ROS_INFO_STREAM("Recieved user frequency");
   }
-  else if(frequency_rate==0){
-    ROS_ERROR_STREAM("Frequency cannot be zero");
+    else if(frequency_rate < 0){
+    ROS_FATAL_STREAM("Frequency cannot be less than zero");
     ROS_WARN_STREAM("Setting default frequency");
     frequency_rate = 8;
   }
-    else if(frequency_rate<0){
-    ROS_FATAL_STREAM("Frequency cannot be less than zero");
+   else if(frequency_rate == 0){
+    ROS_FATAL_STREAM("Frequency cannoot be zero");
     ROS_WARN_STREAM("Setting default frequency");
     frequency_rate = 8;
   }
