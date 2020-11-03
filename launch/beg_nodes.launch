@@ -1,0 +1,14 @@
+<launch>
+    <arg name="freq_rate" default="8" doc="freq_rate"/>
+    <node 
+    pkg="beginner_tutorials"
+    type="talker"
+    name="talker_publisher"
+    output="screen"/>
+
+    <node 
+    pkg="beginner_tutorials"
+    type="listener"
+    name="listener_subscriber"
+    output="screen"/>
+</launch>
