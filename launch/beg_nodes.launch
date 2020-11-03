@@ -1,5 +1,6 @@
 <launch>
     <arg name="freq_rate" default="8" doc="freq_rate"/>
+    <param name="freq_" type="int" value="$(arg freq_rate)" />
     <node 
     pkg="beginner_tutorials"
     type="talker"
