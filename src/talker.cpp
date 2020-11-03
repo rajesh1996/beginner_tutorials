@@ -36,11 +36,14 @@
 #include <iostream>
 #include <exception>
 
+extern std::string custom_msg = "I love robots";
+
 bool newString(beginner_tutorials::changeString::Request &req,
                beginner_tutorials::changeString::Response &res) {
                ROS_INFO_STREAM("String in service:" << req.inputString);
-               ROS_WARN_STREAM("CHanging the string now!!");
-               res.OutputString = req.inputString
+               custom_msg = req.inputString;
+               ROS_WARN_STREAM("USER HAS CHANGED THE STRING!!!!!!!");
+               res.OutputString = req.inputString;
                return true;
 }
 
@@ -76,8 +79,7 @@ int main(int argc, char **argv) {
   ros::NodeHandle n;
 // %EndTag(NODEHANDLE)%
 
-// Advertise the service
-  ros::ServiceServer service = n.advertiseService("Changing_String",newString);
+
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -98,10 +100,29 @@ int main(int argc, char **argv) {
 // %Tag(PUBLISHER)%
   ros::Publisher chatter_pub = n.advertise < std_msgs::String
       > ("chatter", 1000);
+
+  // Advertise the service
+  ros::ServiceServer service = n.advertiseService("changeString",newString);
 // %EndTag(PUBLISHER)%
+  int frequency_rate = 0;
+  n.getParam("freq_",frequency_rate);
+  if(frequency_rate>0){
+    ROS_INFO_STREAM("Recieved user frequency");
+  }
+  else if(frequency_rate==0){
+    ROS_ERROR_STREAM("Frequency cannot be zero");
+    ROS_WARN_STREAM("Setting default frequency");
+    frequency_rate = 8;
+  }
+    else if(frequency_rate<0){
+    ROS_FATAL_STREAM("Frequency cannot be less than zero");
+    ROS_WARN_STREAM("Setting default frequency");
+    frequency_rate = 8;
+  }
+
 
 // %Tag(LOOP_RATE)%
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(frequency_rate);
 // %EndTag(LOOP_RATE)%
 
   /**
@@ -119,12 +140,17 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "I love Robots " << count;
+    ss << custom_msg << count;
     msg.data = ss.str();
+
+    // std::string msg_pass;
+    // msg_pass = 
+    // custom_msg 
 // %EndTag(FILL_MESSAGE)%
 
 // %Tag(ROSCONSOLE)%
     ROS_INFO("%s", msg.data.c_str());
+    ROS_DEBUG_STREAM("Sending message:"<< count);
 // %EndTag(ROSCONSOLE)%
 
     /**
@@ -146,7 +172,7 @@ int main(int argc, char **argv) {
 // %EndTag(RATE_SLEEP)%
     ++count;
   }
-
+  ROS_FATAL_STREAM("Execution talker done!!!!!!");
   return 0;
 }
 // %EndTag(FULLTEXT)%
