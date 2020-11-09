@@ -1,5 +1,5 @@
 ## ROS - Beginner Tutorials
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/rajesh1996/beginner_tutorials/blob/master/LICENSE)
 
 ## Author
 Rajeshwar N S
