@@ -74,17 +74,23 @@ source ~/catkin_ws/devel/setup.bash
 rosrun tf view_frames
 ```
 
-## Run Unit Tests
-# Using Launch
+# Run Unit Tests
+## Using Launch
 * Start the roscore and run the following in a new terminal
 ```
 source ~/catkin_ws/devel/setup.bash
 rostest beginner_tutorials test.launch
 ```
-# Using catkin
+## Using catkin
 ```
 source ~/catkin_ws/devel/setup.bash
 catkin_make run_tests_beginner_tutorials
+```
+## Run testTalker node
+* Start the roscore and in a new terminal run the publisher node and again open a new terminal and run the following
+```
+source ~/catkin_ws/devel/setup.bash
+rosrun beginner_tutorials testTalker
 ```
 
 ## Record ROSbag
