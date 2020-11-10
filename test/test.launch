@@ -1,0 +1,7 @@
+
+<launch>
+    <arg name="freq_rate" default="8" doc="freq_rate"/>
+    <param name="freq_rate" value="$(arg freq_rate)"/>
+    <node pkg="beginner_tutorials" name="talker" type="talker" />
+    <test pkg="beginner_tutorials" test-name="testTalker" type="testTalker" />
+</launch>
