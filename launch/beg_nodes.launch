@@ -1,5 +1,6 @@
 <launch>
     <arg name="freq_rate" default="8" doc="freq_rate"/>
+    <arg name="start_record" default="false"/>
     <param name="freq_rate" value="$(arg freq_rate)"/>
     <node pkg="beginner_tutorials"
           type="talker"
@@ -10,4 +11,10 @@
           type="listener"
           name="listener_subscriber"
           output="screen"/>
+
+	<node pkg="rosbag"
+	  type="record"
+	  name="record"
+	  output="screen"
+	  args="-a -O $(find beginner_tutorials)/results/ros_bag" if="$(arg start_record)"/>
 </launch>
