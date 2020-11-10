@@ -26,6 +26,7 @@
  */
 #include <sstream>
 #include <string>
+#include <tf/transform_broadcaster.h>
 #include "ros/ros.h"
 // %EndTag(ROS_HEADER)%
 // %Tag(MSG_HEADER)%
@@ -51,6 +52,16 @@ bool newString(beginner_tutorials::changeString::Request &req,
   ROS_WARN_STREAM("USER HAS CHANGED THE STRING!!!!!!!");
   res.OutputString = req.inputString;
   return true;
+}
+
+void tfBroadcast() {
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  transform.setOrigin(tf::Vector3(1.0,2.0,3.0));
+  tf::Quaternion q;
+  q.setRPY(1,1,0);
+  transform.setRotation(q);
+  br.sendTransform(tf::StampedTransform(transform,ros::Time::now(),"world","talk"));
 }
 
 /**
@@ -161,7 +172,7 @@ int main(int argc, char **argv) {
 // %Tag(PUBLISH)%
     chatter_pub.publish(msg);
 // %EndTag(PUBLISH)%
-
+    tfBroadcast();
 // %Tag(SPINONCE)%
     ros::spinOnce();
 // %EndTag(SPINONCE)%
