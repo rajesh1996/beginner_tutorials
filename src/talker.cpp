@@ -24,9 +24,9 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  */
+#include <tf/transform_broadcaster.h>
 #include <sstream>
 #include <string>
-#include <tf/transform_broadcaster.h>
 #include "ros/ros.h"
 // %EndTag(ROS_HEADER)%
 // %Tag(MSG_HEADER)%
@@ -53,15 +53,21 @@ bool newString(beginner_tutorials::changeString::Request &req,
   res.OutputString = req.inputString;
   return true;
 }
+/**
+ * @fn void tfBroadcast()
+ * @brief Function that broadcasts a tf frame
+ * 
+ */
 
 void tfBroadcast() {
   static tf::TransformBroadcaster br;
   tf::Transform transform;
-  transform.setOrigin(tf::Vector3(1.0,2.0,3.0));
+  transform.setOrigin(tf::Vector3(1.0, 2.0, 3.0));
   tf::Quaternion q;
-  q.setRPY(1,1,0);
+  q.setRPY(1, 1, 0);
   transform.setRotation(q);
-  br.sendTransform(tf::StampedTransform(transform,ros::Time::now(),"world","talk"));
+  br.sendTransform(
+      tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 }
 
 /**
